@@ -1,6 +1,6 @@
 # retry
 
-<p align="center"><img src="images/retry.png" width="360"></p>
+<p align="center"><img src="images/retry.png" width="220"></p>
 
 ### description
 

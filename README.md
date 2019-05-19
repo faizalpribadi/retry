@@ -1,4 +1,5 @@
 # retry
+[![Build Status](https://cloud.drone.io/api/badges/faizalpribadi/retry/status.svg)](https://cloud.drone.io/faizalpribadi/retry)
 
 <p align="center"><img src="images/retry.png" width="220"></p>
 

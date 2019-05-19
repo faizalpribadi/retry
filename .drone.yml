@@ -1,0 +1,9 @@
+kind: pipeline
+name: default
+
+steps:
+- name: retry
+  image: golang:1.11
+  commands:
+  - go test
+  - go build

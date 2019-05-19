@@ -16,10 +16,10 @@ Retry Execution Library For Go
 
 ```go
 
-Retry(5, 1, func() error {
+retry.Retry(5, 1, func() error {
     // do some logic here
 
-    return error
+    return nil
 })
 
 ```

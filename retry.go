@@ -1,21 +1,20 @@
 package retry
 
 import (
-	"log"
 	"time"
 )
 
-func Try(attempt int, delay time.Duration, next func() error) {
+func Do(attempt int, delay time.Duration, next func() error) {
+RetryLoop:
 	for {
 		err := next()
 		if err != nil {
 			if attempt--; attempt > 0 {
-				log.Println("Error retrying. ", err.Error())
 				time.Sleep(delay * time.Second)
 				continue
 			}
 		}
 
-		break
+		break RetryLoop
 	}
 }

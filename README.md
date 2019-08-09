@@ -15,10 +15,10 @@ Retry Execution Library For Go
 ### usage
 
 ```go
-    retry.Try(5, 5, func() error {
+    retry.Do(5, 5, func() error {
 		resp, err := http.Get("https://example.io")
 		if err != nil {
-			log.Println("This error will indicated retry mechanism is working")
+			log.Println(err)
 			return err
 		}
 		defer resp.Body.Close()

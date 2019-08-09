@@ -5,7 +5,7 @@ import (
 	"time"
 )
 
-func Retry(attempt int, delay time.Duration, next func() error) {
+func Try(attempt int, delay time.Duration, next func() error) {
 	for {
 		err := next()
 		if err != nil {

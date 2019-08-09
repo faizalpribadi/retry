@@ -1,32 +1,26 @@
 package retry
 
 import (
-	"errors"
-	"log"
+	"net/http"
 	"testing"
 )
 
-var (
-	ErrDoesNotMatchValue = errors.New("value does not match")
-)
-
-func render(name string) (string, error) {
-	if name == "" {
-		return "", ErrDoesNotMatchValue
+func get(url string) error {
+	resp, err := http.Get(url)
+	if err != nil {
+		return err
 	}
-
-	return name, nil
+	defer resp.Body.Close()
+	return nil
 }
 
 func TestRetryOK(t *testing.T) {
 	attempt := 5 // retry in 5
-	Retry(attempt, 1, func() error {
-		value, err := render("NOT_ERROR")
+	Do(attempt, 1, func() error {
+		err := get("https://example.io")
 		if err != nil {
-			t.Errorf("ERROR : %s", err.Error())
+			t.Log(err)
 		}
-
-		log.Println(value)
 		return nil
 	})
 }
